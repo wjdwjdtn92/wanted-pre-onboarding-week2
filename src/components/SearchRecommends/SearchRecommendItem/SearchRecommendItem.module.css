@@ -1,0 +1,10 @@
+.item {
+  display: flex;
+  gap: 8px;
+}
+
+.search_icon {
+  width: 16px;
+  height: 16px;
+  color: gray;
+}
