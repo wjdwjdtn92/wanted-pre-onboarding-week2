@@ -18,11 +18,14 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "baseUrl": ".",
+    "baseUrl": "src",
     "paths": {
-      "@/*": ["src/*"]
-    },
+      "@/*": ["*"],
+      "@icons/*": ["assets/icons/*"],
+      "@components/*": ["components/*"],
+      "@pages/*": ["pages/*"]
+    }
   },
-  "include": ["src"],
+  "include": ["src/**/*", "custom.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
