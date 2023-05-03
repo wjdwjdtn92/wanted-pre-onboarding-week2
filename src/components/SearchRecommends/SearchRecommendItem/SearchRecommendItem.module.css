@@ -1,10 +1,16 @@
 .item {
   display: flex;
   gap: 8px;
+  padding: 16px;
+  padding-left: 28px;
 }
 
 .search_icon {
   width: 16px;
   height: 16px;
   color: gray;
+}
+
+.selected {
+  background-color: #f1f3f5;
 }
