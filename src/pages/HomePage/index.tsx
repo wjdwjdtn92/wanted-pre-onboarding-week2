@@ -3,11 +3,13 @@ import styles from '@pages/HomePage/HomePage.module.css';
 import HomeTitle from '@components/HomeTitle';
 import SearchForm from '@/components/SearchForm';
 import SearchRecommends from '@/components/SearchRecommends';
-import { search } from '@/services/searchApi';
-import { SearchRecommendType } from '@/types/recommend.type';
+import useSearch from '@/hooks/useSearch';
 
 function HomePage() {
-  const [recommendList, setRecommendList] = useState<SearchRecommendType[]>([]);
+  const { recommendList, fetchingSearch } = useSearch({
+    cacheExpire: 300,
+    cacheLimit: 100,
+  });
   const [isFocused, setIsFocused] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState<number>(-1);
 
@@ -25,9 +27,7 @@ function HomePage() {
       return;
     }
 
-    const response = await search(encodeURI(searchKeyword));
-
-    setRecommendList(response);
+    await fetchingSearch(searchKeyword);
   };
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
@@ -52,8 +52,6 @@ function HomePage() {
       return;
     }
   };
-
-  console.log(selectedIndex);
 
   return (
     <section className={styles.home_wrapper}>
