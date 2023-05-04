@@ -47,6 +47,12 @@ const useSearch = ({ cacheExpire = 300, cacheLimit = 100 }: UseSearchProps) => {
 
       if (isValidTime(expireTime)) {
         setRecommendList(data);
+
+        cache.set(searchKeyword, {
+          data,
+          expireTime,
+          lastAccessedTime: new Date(),
+        });
         return;
       }
 
