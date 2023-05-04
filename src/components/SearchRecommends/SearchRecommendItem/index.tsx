@@ -16,7 +16,6 @@ function SearchRecommendItem({
     ? [styles.item, styles.selected].join(' ')
     : styles.item;
 
-  console.log(className);
   return (
     <li className={className} id={`recommend_id_${id}`}>
       <SearchIcon className={styles.search_icon} />
